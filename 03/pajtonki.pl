@@ -10,30 +10,29 @@ my %changes;
 while ($somefile = <MYFILE>) {
     chop $somefile;
     #print "$somefile \n" ;
-    open (DFFF, "git diff $ARGV[0]..$ARGV[1] -- ../$somefile | head |") || die "something failed $!\n";
+    open (DFFF, "git diff $ARGV[0]..$ARGV[1] -- $somefile | head |") || die "something failed $!\n";
 
     my $old_line = "";
     my $new_line = "";
     DIFF:
-    while ($diff = <DFFF>) {
+    while (<DFFF>) {
 
-        chomp $diff;
+        chomp ;
+        
+        next DIFF if /^---/ || /^\+\+\+/ ;
+        
 
-        if ($diff =~ /^---/ || $diff =~ /^\+\+\+/) { 
-            next DIFF ;
+        if(/^-(.*)/) {
+            $old_line = "$_";
+#            print "old_line: \t $old_line\n";
         }
-
-        if($diff =~ /^-(.*)/) {
-            $old_line = "$diff";
-            print "old_line: \t $old_line\n";
-        }
-        if($diff =~ /^\+(.*)/) {
-            $new_line = "$diff";
-            print "new_line: \t $new_line\n";
+        if(/^\+(.*)/) {
+            $new_line = "$_";
+#            print "new_line: \t $new_line\n";
         }
         if($old_line && $new_line ) {
             $change = "$old_line => $new_line";
-            print "$change : \t\t\t $somefile \n";
+#            print "$change : \t\t\t $somefile \n";
             push @{$changes{$change}}, "$somefile"; 
             $old_line = "";
             $new_line = "";
