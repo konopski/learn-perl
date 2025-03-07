@@ -1,0 +1,10 @@
+15 08 * * * /mnt/nfs/scripts/cronjobs_current/check.py
+45 08 * * * /mnt/nfs/scripts/cronjobs_current/rat.py
+00 13 * * * /mnt/nfs/scripts/cronjobs_current/file_validation.py
+10 13 * * * /mnt/nfs/scripts/cronjobs_current/hourly_feed.py
+59 23 * * * /mnt/nfs/scripts/cronjobs_current/file_A.py
+00 11 * * * /mnt/nfs/scripts/cronjobs_current/file_C.py
+00 09 * * * /mnt/nfs/scripts/cronjobs_current/file_D.py
+30 11 * * * /mnt/nfs/scripts/cronjobs_current/file_S.py
+00 00 * * * /mnt/nfs/scripts/cronjobs_current/file_T.py
+00 12 * * * /mnt/nfs/scripts/cronjobs_current/file_P.py
