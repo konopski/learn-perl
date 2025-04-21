@@ -1,7 +1,6 @@
 while (<>) {
   tr/A-Z/a-z/;
-  @xyxy =  split(/[^a-z]/, $_);
-  @xyxy = sort(@xyxy); 
+  @xyxy = sort( split(/[^a-z]/, $_));
 
   foreach $i (0 .. $#xyxy) {
       
