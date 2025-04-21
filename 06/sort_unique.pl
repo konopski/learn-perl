@@ -4,9 +4,8 @@ while (<>) {
   @xyxy = sort(@xyxy); 
 
   foreach $i (0 .. $#xyxy) {
-      if ( $xyxy[$i] ne $xyxy[$i+1] ) {
-          print "$xyxy[$i]  "; 
-      }
+      
+          print "$xyxy[$i]  " if ( $xyxy[$i] ne $xyxy[$i+1] ) ; 
   }
   
 }
