@@ -1,6 +1,7 @@
 while (<>) {
-  tr/A-Z/a-z/;
-  @xyxy = sort( split(/[^a-z]/, $_));
+  # lc ;  # lower case # tr/A-Z/a-z/;
+
+  @xyxy = sort split /[^a-z]/, lc ;
 
   foreach $i (0 .. $#xyxy) {
       
